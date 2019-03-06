@@ -35,7 +35,7 @@ class PitifulElasticSearchClient(
    */
   fun put(id: String, obj: JsonObject): Boolean {
 
-    val res = put("http://$host:$port/$index/$type/$id", json = obj)
+    val res = put("http://$host:$port/$index/$type/$id?refresh", json = obj)
 
     return res.jsonObject.getJSONObject("_shards").getInt("successful") >= 1
   }
